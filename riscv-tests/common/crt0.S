@@ -98,4 +98,8 @@ crt_main:
 2:
   call main
 
-  j 1b
+  # Signal simulation end to testbench (write return code to KRZ_GPREG / 0x800000)
+  li t0, 0x800000
+  sw a0, 0(t0)
+3:
+  j 3b
